@@ -27,7 +27,7 @@
         Role: nginx
 
     - tower_inventory_name: "{{name_prefix}}"
-    - tower_host: localhost
+    - tower_host: lab05-ip01.monsoonknowledge.com
     - tower_username: "admin"
     - tower_password: "N0thing10"
 
