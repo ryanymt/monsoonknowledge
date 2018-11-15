@@ -1,0 +1,42 @@
+---
+- ec2_metadata_facts:
+
+- ec2_instance_facts:
+    region: "{{ ansible_ec2_placement_region }}"
+    instance_ids: "{{ ansible_ec2_instance_id }}"
+  delegate_to: 127.0.0.1
+  become: no
+  register: ec2_info
+
+- name: Taking snapshot on /dev/sda1
+  ec2_snapshot:
+    region: "{{ ansible_ec2_placement_region }}"
+    instance_id: "{{ ansible_ec2_instance_id }}"
+    device_name: /dev/sda1
+    description: "snapshot of /dev/sda1 for {{ ansible_ec2_instance_id }}"
+    #snapshot_tags: "{{ ec2_info.instances[0].tags }}"
+  delegate_to: 127.0.0.1
+  become: no
+    
+- name: Get package version
+  shell: rpm -qa | grep "{{ package_name }}"
+  register: old_output
+
+- debug: msg="Old Version = {{ old_output.stdout }}"
+
+- name: Update package
+  yum:
+    name: "{{ package_name }}"
+    state: latest
+
+- name: Get package version
+  shell: rpm -qa | grep "{{ package_name }}"
+  register: new_output
+
+- debug: msg="New Version = {{ new_output.stdout }}"
+
+- name: Restart service
+  service:
+    name: "{{ service_name }}"
+    state: restarted
+    enabled: yes

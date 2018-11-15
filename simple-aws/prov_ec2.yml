@@ -1,0 +1,36 @@
+---
+- name: Provision EC2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  vars:
+    - ec2_server_keypair: ryanymt-rh
+    - ec2_server_security_group: web-svc
+    - ec2_vpc_subnet_id: subnet-24aa677d
+    - ec2_server_group_name: web-hosts
+    - ec2_server_image: ami-6966b80a # Centos7
+    - ec2_server_instcount: 1
+    - name_start_index: 10
+    - name_prefix: "Certis-web"
+    - ec2_assign_public_ip: true
+
+    #Defaults in role
+    #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
+    #ec2_server_region: ap-southeast-1
+    #ec2_instance_type: t2.micro
+
+    - ec2_tags:
+        Env: Demo 
+        Project: Certis
+        Vendor: RedHat
+        Role: nginx
+
+    - tower_inventory_name: "{{name_prefix}}"
+    #- tower_host: 
+    #- tower_username: 
+    #- tower_password: 
+
+  roles:
+    - { role: create-ec2 }
+    - { role: add-to-tower, when: tower_host is defined }

@@ -1,0 +1,10 @@
+- name: Patch MariaDB
+  hosts: mariadb-hosts
+  become: yes
+  
+  vars:
+    package_name: mariadb-server
+    service_name: mariadb
+
+  roles:
+    - patch-package
