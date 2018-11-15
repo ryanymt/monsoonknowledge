@@ -21,7 +21,8 @@
 
 - name: Add tower host
   tower_host:
-    name: "{{ name_prefix + '%02d' | format(item.0 + name_start_index) }}"
+    #name: "{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) }}"
+    name: "{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) }}"
     inventory: "{{ tower_inventory_name }}"
     state: present
     tower_host: "{{ tower_host }}"
@@ -30,6 +31,10 @@
     tower_verify_ssl: no
     variables: "ansible_ssh_host: {{ item.1.public_dns_name if ansible_ec2_use_public_ip else item.1.private_ip }}"
   with_indexed_items: "{{ ec2.instances }}"  
+  register: inventory_host
+
+- debug: msg="{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) }}"
+- debug: var=inventory_host
   
 # https://github.com/ansible/ansible/issues/29149
 - name: Find group
