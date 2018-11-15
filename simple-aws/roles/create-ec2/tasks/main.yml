@@ -9,7 +9,7 @@
     vpc_subnet_id: "{{ ec2_vpc_subnet_id}}"
     assign_public_ip: "{{ ec2_assign_public_ip }}"
     wait: True
-    wait_timeout: 600
+    wait_timeout: 900
     count: "{{ ec2_server_instcount }}"
   register: ec2
   
