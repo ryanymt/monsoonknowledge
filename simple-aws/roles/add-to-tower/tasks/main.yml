@@ -54,6 +54,7 @@
     body:
       name: "{{ name_prefix + '%02d' | format(item.0 + name_start_index) }}"
     status_code: 201, 204
+    force_basic_auth: yes
     user: "{{tower_username}}"
     password: "{{tower_password}}"
     body_format: json

@@ -11,8 +11,8 @@
     - ec2_server_group_name: web-hosts
     - ec2_server_image: ami-6966b80a # Centos7
     - ec2_server_instcount: 1
-    - name_start_index: 10
-    - name_prefix: "Certis-web"
+    - name_start_index: web
+    - name_prefix: "Certis"
     - ec2_assign_public_ip: true
 
     #Defaults in role
