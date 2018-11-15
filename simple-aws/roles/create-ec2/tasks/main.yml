@@ -24,7 +24,7 @@
     region: "{{ ec2_server_region }}"
     resource: "{{ item.1.id }}"
     tags: 
-      Name: "{{ name_prefix + ec2_inst_name + '%02d' | format(item.0 + ec2_inst_name + name_start_index) if ec2_server_name is not defined else ec2_server_name}}"
+      Name: "{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) if ec2_server_name is not defined else ec2_server_name}}"
   with_indexed_items: "{{ ec2.instances }}"
   loop_control:
     label: item.1.id
