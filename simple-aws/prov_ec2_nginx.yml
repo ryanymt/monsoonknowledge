@@ -27,11 +27,27 @@
         Vendor: RedHat
         Role: nginx
 
+# Tower variables
     - tower_inventory_name: "{{name_prefix}}"
     - tower_host: lab05-ip01.monsoonknowledge.com
     - tower_username: "admin"
     - tower_password: "N0thing10"
 
+
   roles:
     - { role: create-ec2 }
     - { role: add-to-tower, when: tower_host is defined }
+
+- name: Package Installation
+  hosts: new_servers
+  become: yes
+  # package installation
+  vars: 
+
+    - ansible_ssh_private_key_file: /Users/yminthei/Documents/aws/ryanymt-rh.pem
+    - ansible_remote_user: root
+    - package_name: nginx
+    - service_name: nginx
+
+  roles: 
+    - { role: install-package, when: package_name is defined and service_name is defined }

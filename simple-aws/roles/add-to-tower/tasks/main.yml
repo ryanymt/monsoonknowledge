@@ -33,8 +33,8 @@
   with_indexed_items: "{{ ec2.instances }}"  
   register: inventory_host
 
-- debug: msg="{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) }}"
-- debug: var=inventory_host
+#- debug: msg="{{ ec2_inst_name + '%02d' | format(item.0 + name_start_index) }}"
+#- debug: var=inventory_host
   
 # https://github.com/ansible/ansible/issues/29149
 - name: Find group
