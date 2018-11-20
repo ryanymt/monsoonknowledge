@@ -16,7 +16,7 @@ NODE_ENV=prod node server.js
 ```sh
 NODE_ENV=dev
 PORT=8080
-PUBLI_URL=127.0.0.1
+PUBLIC_URL=127.0.0.1
 ```
 
 # CURL
