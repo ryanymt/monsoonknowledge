@@ -1,7 +1,20 @@
-to build : 
+# To Build
+run the below command
+```sh
 npm install
+```
 
-to run :
+# To Run
+run the below command
+```sh
 NODE_ENV=dev node server.js
 NODE_ENV=uat node server.js
 NODE_ENV=prod node server.js
+```
+
+# CURL
+```sh
+curl localhost:8080/simple-app/dev
+curl localhost:8080/simple-app/uat
+curl localhost:8080/simple-app/prod
+```
