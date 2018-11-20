@@ -13,10 +13,11 @@ NODE_ENV=prod node server.js
 ```
 
 # Available Variable examples
+```sh
 NODE_ENV=dev
 PORT=8080
 PUBLI_URL=127.0.0.1
-
+```
 
 # CURL
 ```sh
