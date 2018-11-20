@@ -5,21 +5,21 @@
   gather_facts: no
   
   vars:
-#    - nginx_keypair: ryanymt-rh
-#    - nginx_instcount: 1
-#    - nginx_inst_name: "nginx-proxy"
-#    - nginx_image: ami-6966b80a
-#    - nginx_subnet: subnet-24aa677d
-    - ec2_server_keypair: "{{ nginx_keypair }}"
+    - nodejs_keypair: ryanymt-rh
+    - nodejs_instcount: 1
+    - nodejs_inst_name: "nodejs"
+    - nodejs_image: ami-6966b80a
+    - nodejs_subnet: subnet-24aa677d
+    - ec2_server_keypair: "{{ nodejs_keypair }}"
     - ec2_server_security_group: web-svc
-    - ec2_vpc_subnet_id: "{{ nginx_subnet }}"
+    - ec2_vpc_subnet_id: "{{ nodejs_subnet }}"
     - ec2_server_group_name: webservers
-    - ec2_server_image: "{{ nginx_image }}" # Centos7
-    - ec2_server_instcount: "{{ nginx_instcount }}"
+    - ec2_server_image: "{{ nodejs_image }}" # Centos7
+    - ec2_server_instcount: "{{ nodejs_instcount }}"
     - name_start_index: 10
     - name_prefix: "Certis"
     - ec2_assign_public_ip: true
-    - ec2_inst_name: "{{ nginx_inst_name }}"
+    - ec2_inst_name: "{{ nodejs_inst_name }}"
 
     #Defaults in role
     #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
@@ -51,9 +51,11 @@
 
     - ansible_ssh_private_key_file: /root/ryanymt.pem
     - ansible_remote_user: root
-    - package_name: nginx
-    - service_name: nginx
+    - package_name: 
+         - nodejs*
+         - git
+         - npm
 
   roles: 
     - { role: enable-epel-repo }
-    - { role: install-package, when: package_name is defined and service_name is defined }
+    - { role: install-package, when: package_name is defined }
