@@ -19,7 +19,7 @@
     - name_start_index: 10
     - name_prefix: "Certis"
     - ec2_assign_public_ip: true
-    - ec2_inst_name: "{{ nodejs_inst_name }}"
+    - ec2_inst_name: "{{ project_name + '_demo' }}"
 
     #Defaults in role
     #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
