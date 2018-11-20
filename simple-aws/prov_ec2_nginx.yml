@@ -5,16 +5,21 @@
   gather_facts: no
   
   vars:
-    - ec2_server_keypair: ryanymt-rh
+#    - nginx_keypair: ryanymt-rh
+#    - nginx_instcount: 1
+#    - nginx_inst_name: "nginx-proxy"
+#    - nginx_image: ami-6966b80a
+#    - nginx_subnet: subnet-24aa677d
+    - ec2_server_keypair: "{{ nginx_keypair }}"
     - ec2_server_security_group: web-svc
-    - ec2_vpc_subnet_id: subnet-24aa677d
+    - ec2_vpc_subnet_id: "{{ nginx_subnet }}"
     - ec2_server_group_name: webservers
-    - ec2_server_image: ami-6966b80a # Centos7
-    - ec2_server_instcount: 1
+    - ec2_server_image: "{{ nginx_image }}" # Centos7
+    - ec2_server_instcount: "{{ nginx_instcount }}"
     - name_start_index: 10
     - name_prefix: "Certis"
     - ec2_assign_public_ip: true
-    - ec2_inst_name: "nginx-proxy"
+    - ec2_inst_name: "{{ nginx_inst_name }}"
 
     #Defaults in role
     #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
@@ -52,3 +57,4 @@
   roles: 
     - { role: enable-epel-repo }
     - { role: install-package, when: package_name is defined and service_name is defined }
+    - { role: nginx-proxy-config }
