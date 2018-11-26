@@ -45,7 +45,7 @@
   
   tasks:
    - set_fact:
-       dev_uri: "{{ ec2.instances.private_ip }}"
+       dev_uri: "{{ ec2.instances.private_ip_address }}"
 
 - name: Package Installation
   hosts: new_servers
