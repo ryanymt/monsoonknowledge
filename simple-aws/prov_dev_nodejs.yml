@@ -44,8 +44,12 @@
     - { role: add-to-tower, when: tower_host is defined }
   
   tasks:
+   - ec2_instance_facts:
+       filters:
+         instance_id: "{{ ec2.instances.id }}"
+     register: ec2_facts
    - set_fact:
-       dev_uri: "{{ ec2.instances.private_ip_address }}"
+       dev_uri: "{{ ec2_facts.private_ip_address }}"
 
 - name: Package Installation
   hosts: new_servers
