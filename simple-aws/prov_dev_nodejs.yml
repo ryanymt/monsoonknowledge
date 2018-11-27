@@ -78,6 +78,10 @@
   hosts: webserver
   remote_user: centos
   become: yes
+  vars:
+
+    - ansible_ssh_private_key_file: /opt/ryanymt.pem
+    - ansible_remote_user: centos
 
   roles:
     - {role: nginx-proxy-config}
