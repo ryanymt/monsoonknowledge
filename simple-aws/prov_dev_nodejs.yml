@@ -8,18 +8,21 @@
     - nodejs_keypair: ryanymt-rh
     - nodejs_instcount: 1
     - nodejs_inst_name: "nodejs"
-    - nodejs_image: ami-6966b80a
-    - nodejs_subnet: subnet-24aa677d
+    - nodejs_image: ami-88fd24eb
+    #- nodejs_image: ami-6966b80a
+    - nodejs_subnet: subnet-bfb1b6f6
     - ec2_server_keypair: "{{ nodejs_keypair }}"
     - ec2_server_security_group: web-svc
     - ec2_vpc_subnet_id: "{{ nodejs_subnet }}"
-    - ec2_server_group_name: webservers
+    - ec2_server_group_name: app-server
     - ec2_server_image: "{{ nodejs_image }}" # Centos7
     - ec2_server_instcount: "{{ nodejs_instcount }}"
     - name_start_index: 10
     - name_prefix: "Certis"
     - ec2_assign_public_ip: true
-    - ec2_inst_name: "{{ project_name + '_dev' }}"
+    - project_name: "testpro"
+    - ec2_inst_name: "{{ project_name + env_name }}"
+    - env_name: "dev"
 
     #Defaults in role
     #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
@@ -46,26 +49,35 @@
   tasks:
    - set_fact:
        dev_url: "{{ec2.instances[0].private_ip}}"
-   - ec2_instance_facts:
-       filters:
-         instance_id: "{{ ec2.instances[0].id }}"
-     register: ec2_facts
-   - set_fact:
-       dev_uri: "{{ ec2_facts.private_ip_address }}"
 
 - name: Package Installation
   hosts: new_servers
-  #become: yes
+  remote_user: centos
+  become: yes
   # package installation
   vars: 
 
     - ansible_ssh_private_key_file: /root/ryanymt.pem
-    - ansible_remote_user: root
+    - ansible_remote_user: centos
     - package_name: 
-         - nodejs*
+         - nodejs-t*
          - git
          - npm
+         - openssl
+    - dest_path: "/opt/test"
+    - git_repo_url: "https://github.com/ryanymt/monsoonknowledge.git"
+    - env_name: dev
 
   roles: 
     - { role: enable-epel-repo }
     - { role: install-package, when: package_name is defined }
+    - { role: git-checkout }
+    - { role: nodejs-npm-deploy }
+
+- name: nginx config
+  hosts: webserver
+  remote_user: centos
+  become: yes
+
+  roles:
+    - {role: nginx-proxy-config}

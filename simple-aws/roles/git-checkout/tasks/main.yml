@@ -1,0 +1,6 @@
+---
+# tasks file for git-checkout
+- name: git checkout
+  git:
+      repo: "{{git_repo_url}}"
+      dest: "{{dest_path}}"

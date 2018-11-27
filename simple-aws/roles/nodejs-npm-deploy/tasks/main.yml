@@ -1,0 +1,13 @@
+---
+# tasks file for nodjs-npm-deploy
+- name: nmp deploy
+  shell: cd {{dest_path}}/simple-app && npm install
+  register: output
+
+- debug: msg=output
+
+- name: nodejs
+  shell: |
+    cd {{dest_path}}/simple-app 
+    NODE_ENV={{env_name}} PUBLIC_URL=0.0.0.0 node server.js &
+       

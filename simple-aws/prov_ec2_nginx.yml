@@ -5,11 +5,11 @@
   gather_facts: no
   
   vars:
-#    - nginx_keypair: ryanymt-rh
-#    - nginx_instcount: 1
-#    - nginx_inst_name: "nginx-proxy"
-#    - nginx_image: ami-6966b80a
-#    - nginx_subnet: subnet-24aa677d
+    - nginx_keypair: ryanymt-rh
+    - nginx_instcount: 1
+    - nginx_inst_name: "nginx-proxy"
+    - nginx_image: ami-88fd24eb
+    - nginx_subnet: subnet-24aa677d
     - ec2_server_keypair: "{{ nginx_keypair }}"
     - ec2_server_security_group: web-svc
     - ec2_vpc_subnet_id: "{{ nginx_subnet }}"
@@ -19,8 +19,10 @@
     - name_start_index: 10
     - name_prefix: "Certis"
     - ec2_assign_public_ip: true
-    - ec2_inst_name: "{{ project_name + '_web' }}"
     #- ec2_inst_name: "{{ nginx_inst_name }}"
+    - project_name: "testpro"
+    - ec2_inst_name: "{{ project_name + '_' +  env_name }}"
+    - env_name: "web"
 
     #Defaults in role
     #ec2_server_image: 'ami-f068a193' # Centos 7 in ap-southeast-1
@@ -46,12 +48,14 @@
 
 - name: Package Installation
   hosts: new_servers
+  remote_user: centos
+  become: yes
   #become: yes
   # package installation
   vars: 
 
     - ansible_ssh_private_key_file: /root/ryanymt.pem
-    - ansible_remote_user: root
+    - ansible_remote_user: centos
     - package_name: nginx
     - service_name: nginx
 
