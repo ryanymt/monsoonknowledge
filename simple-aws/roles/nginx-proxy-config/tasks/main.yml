@@ -8,8 +8,3 @@
     - nginx restart
 
 
-  handler: 
-    - name: nginx restart
-      systemd:
-         name: nginx
-         state: restarted

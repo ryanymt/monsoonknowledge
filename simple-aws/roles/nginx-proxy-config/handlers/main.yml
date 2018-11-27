@@ -1,2 +1,6 @@
 ---
 # handlers file for nginx-proxy-config
+- name: nginx restart
+  systemd:
+      name: nginx
+      state: restarted
