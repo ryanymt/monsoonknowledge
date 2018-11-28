@@ -8,7 +8,7 @@
     - nodejs_keypair: ryanymt-rh
     - nodejs_instcount: 1
     - nodejs_inst_name: "nodejs"
-    - nodejs_image: ami-88fd24eb
+    - nodejs_image: ami-0616b41a1d9283709
     #- nodejs_image: ami-6966b80a
     - nodejs_subnet: subnet-bfb1b6f6
     - ec2_server_keypair: "{{ nodejs_keypair }}"
