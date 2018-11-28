@@ -1,9 +1,0 @@
-- name: Stop MariaDB
-  hosts: mariadb-hosts
-  become: yes
-  
-  vars:
-    service_name: mariadb
-
-  roles:
-    - stop-service
