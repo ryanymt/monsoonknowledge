@@ -1,6 +1,10 @@
 ---
 # tasks file for git-checkout
+- name: create dir
+  shell: mkdir "{{dest_path}}"
+
 - name: git checkout
   git:
       repo: "{{git_repo_url}}"
       dest: "{{dest_path}}"
+      force: yes
