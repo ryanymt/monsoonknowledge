@@ -11,7 +11,7 @@
 - name: nodejs
   shell: |
     cd {{dest_path}}/simple-app 
-    NODE_ENV={{env_name}} PUBLIC_URL=0.0.0.0 node server.js &
+    nohup NODE_ENV={{env_name}} PUBLIC_URL=0.0.0.0 node server.js
   register: js_result
 
 - debug: var=js_result     
