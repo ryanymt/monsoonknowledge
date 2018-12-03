@@ -37,7 +37,7 @@
 
 # Tower variables
     - tower_inventory_name: "{{name_prefix}}"
-    - tower_host: wh.monsoonk.com
+    - tower_host: lab05-ip01.monsoonknowledge.com
     - tower_username: "admin"
     - tower_password: "changeme"
 

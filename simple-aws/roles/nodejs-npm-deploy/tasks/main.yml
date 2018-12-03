@@ -4,7 +4,7 @@
   shell: |
       npm install
   args:
-    chdir: {{dest_path}}/simple-app
+    chdir: "{{dest_path}}/simple-app"
   register: output
 
 - debug: var=output
@@ -13,7 +13,7 @@
   shell: |
     NODE_ENV={{env_name}} PUBLIC_URL=0.0.0.0 node server.js &
   args:
-    chdir: {{dest_path}}/simple-app
+    chdir: "{{dest_path}}/simple-app"
   async: 1
   poll: 0
   register: js_result

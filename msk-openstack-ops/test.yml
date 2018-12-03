@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+  - os_project:
+     cloud: admin
+     name: testproj
+     state: present
+     domain: Default
+     enabled: yes
