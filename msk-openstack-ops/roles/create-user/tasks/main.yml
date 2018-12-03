@@ -1,0 +1,11 @@
+---
+# tasks file for create-user
+- name: create new user
+  os_user: 
+    cloud: "{{admin_user}}"
+    name: "{{new_user_name}}"
+    password: "{{new_user_password}}"
+    email: "{{new_user_email}}"
+    state: "{{state}}"
+    domain: default
+    default_project: "{{project_name}}"

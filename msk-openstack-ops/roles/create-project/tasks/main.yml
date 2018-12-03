@@ -1,0 +1,9 @@
+---
+# tasks file for create-project
+- name: new osp project creation
+  os_project:
+     cloud: "{{admin_user}}" 
+     name:  "{{new_project_name}}"
+     state: "{{state}}"
+     domain: Default
+     enabled: yes

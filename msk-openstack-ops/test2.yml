@@ -1,5 +1,0 @@
-- hosts: localhost
-  tasks:
-  -  os_image_facts:
-      cloud: admin
-      image: image1

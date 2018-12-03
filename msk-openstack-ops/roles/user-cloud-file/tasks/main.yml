@@ -1,0 +1,9 @@
+---
+# tasks file for user-cloud-file
+- name: add new user credential
+  blockinfile:
+    dest: clouds.yaml
+    content: "{{lookup('template', 'user.clouds.yaml.j2') }}"
+    state: "{{state}}"
+    marker_begin: "{{new_user_name}}"
+    marker_end: "{{new_user_name}}"

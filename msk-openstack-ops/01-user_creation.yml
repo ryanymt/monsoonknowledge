@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+    - 01-user_creation.vars
+
+  roles:
+#    - {role: create-project}
+#    - {role: create-user}
+    - {role: user-cloud-file}

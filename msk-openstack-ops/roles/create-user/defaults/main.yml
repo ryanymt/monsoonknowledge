@@ -1,0 +1,9 @@
+---
+# defaults file for create-user
+new_user_email : dummy@dummy-mail.co
+state: present
+
+
+required_vars:
+   - new_user_name
+   - new_user_password 

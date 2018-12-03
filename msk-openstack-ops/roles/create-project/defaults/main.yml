@@ -1,0 +1,7 @@
+---
+# defaults file for create-project
+admin_user: admin
+state: present
+
+required_vars:
+  - new_project_name
