@@ -9,3 +9,11 @@
     state: "{{state}}"
     domain: default
     default_project: "{{project_name}}"
+- name: Ensure project user association
+  os_user_role:
+    cloud: "{{admin_user}}"
+    state: "{{state}}"
+    user: "{{new_user_name}}"
+    project: "{{project_name}}"
+    role: _member_
+  ignore_errors: yes

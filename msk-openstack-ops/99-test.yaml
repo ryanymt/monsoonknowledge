@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - os_project_facts:
+         cloud: usr-tester
+         name: usr-tester
+    - debug:
+         var: openstack_projects

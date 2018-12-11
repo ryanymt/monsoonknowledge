@@ -1,0 +1,22 @@
+---
+# tasks file for manage-network
+- name: Create internal network(s)
+  os_network:
+      cloud: "{{user_name}}"
+      state: "{{state}}"
+      name: "{{item.net_name}}"
+  with_items:
+      - "{{internal_network}}"
+
+- name: Create internal subnets
+  os_subnet:
+    cloud: "{{user_name}}"
+    state: "{{state}}"
+    network_name: "{{item.net_name}}"
+    name: "{{item.subnet_name}}"
+    cidr: "{{item.subnet_cidr}}"
+    dns_nameservers: "{{item.dns_server}}"
+    enable_dhcp: "{{item.enable_dhcp}}"
+    host_routes:
+  with_items:
+     - "{{internal_network}}"

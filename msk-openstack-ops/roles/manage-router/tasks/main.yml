@@ -1,0 +1,11 @@
+---
+# tasks file for manage-router
+- name: create router
+  os_router:
+    cloud: "{{user_name}}"
+    state: "{{state}}"
+    name: "{{router_name}}"
+    network: "{{external_net}}"
+    interfaces: "{{item.subnet_name}}"
+  with_items:
+    - "{{internal_subnets}}"

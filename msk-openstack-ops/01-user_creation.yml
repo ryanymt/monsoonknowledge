@@ -4,6 +4,6 @@
     - 01-user_creation.vars
 
   roles:
-#    - {role: create-project}
-#    - {role: create-user}
+    - {role: manage-project}
+    - {role: manage-user}
     - {role: user-cloud-file}

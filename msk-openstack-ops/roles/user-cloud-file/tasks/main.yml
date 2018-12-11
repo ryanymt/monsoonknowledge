@@ -5,6 +5,6 @@
     dest: clouds.yaml
     content: "{{lookup('template', 'user.clouds.yaml.j2') }}"
     state: "{{state}}"
-    marker: "#{mark} managed"
-    marker_begin: "{{new_user_name}}"
-    marker_end: "{{new_user_name}}"
+#    marker: "#{mark} User File"
+    marker_begin: "Begin {{new_user_name}} "
+    marker_end: "End {{new_user_name}}"
