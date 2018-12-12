@@ -1,0 +1,13 @@
+---
+# tasks file for deploy-instance
+- name: deploy new instance
+  os_server:
+    cloud: "{{user_name}}"
+    name: "{{item.instance_name}}"
+    image: "{{item.image_name}}"
+    flavor: "{{item.flavor_name}}"
+    key_name: "{{item.key_name}}"
+    network: "{{item.network_name}}"
+    auto_ip: "{{item.pub_ip | default ('no')}}"
+  with_items:
+     - "{{instance_info}}"
