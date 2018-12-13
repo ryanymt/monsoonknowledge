@@ -9,5 +9,16 @@
     key_name: "{{item.key_name}}"
     network: "{{item.network_name}}"
     auto_ip: "{{item.pub_ip | default ('no')}}"
+    state: "{{state}}"
+    meta: 
+     hostname: "{{item.instance_name}}"
+     group_name: "{{item.group_name | default (omit)}}"
   with_items:
      - "{{instance_info}}"
+  register: os_instance
+
+- name: add temporary to inventory
+  debug:
+    msg: "deployed with {{item.server.public_v4}}"
+  with_items: "{{os_instance.results }}"
+  when: state == "present"  

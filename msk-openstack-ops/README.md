@@ -1,4 +1,4 @@
-# This modules are created to manage Monsoon Knowledge Lab environment
+# These roles are created to manage Monsoon Knowledge Lab environment
 
  Author: Ryan Ye Min Thein
 
