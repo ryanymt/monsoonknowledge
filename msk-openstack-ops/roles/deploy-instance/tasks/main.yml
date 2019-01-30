@@ -17,8 +17,16 @@
      - "{{instance_info}}"
   register: os_instance
 
-- name: add temporary to inventory
+- name: temp debug for tshoot
   debug:
     msg: "deployed with {{item.server.public_v4}}"
   with_items: "{{os_instance.results }}"
   when: state == "present"  
+
+- name: add temp host inventory
+  add_host:
+     name: "{{item.server.name}}"
+     groups: "{{item.server.metadata.group_name}}"
+     ansible_ssh_host: "{{item.server.public_v4 if item.server.public_v4 is defined else item.server.private_v4}}"
+  with_items: "{{os_instance.results }}"
+  when: state == "present"
