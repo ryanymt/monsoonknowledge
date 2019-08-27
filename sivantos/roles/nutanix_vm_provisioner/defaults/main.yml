@@ -12,8 +12,8 @@ prism_user: ansiblesvc
 prism_password: "@nS1bl3P@ss"
 # Global VM Settings
 cluster_name: "CTCNTNX"
-subnet_name: "VLAN203"
-image_name: "RHEL_Server_7.5"
+subnet_name: "VLAN 203"
+image_name: "RHEL7Clone"
 
 # Define your VM's here
 vm_defs:
