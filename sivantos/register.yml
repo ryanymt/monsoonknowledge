@@ -1,0 +1,16 @@
+- hosts: something
+  become: true
+  vars_file:
+     - passwords.txt
+  tasks: 
+    - name: register to RHN
+      redhat_subscription:
+        state: present
+        username: ryan.ye@redhat.com
+        password: "{{ rhn_pass }}"
+        auto_attach: true
+
+    - name: update all packages
+      yum:
+        name: "*"
+        state: latest

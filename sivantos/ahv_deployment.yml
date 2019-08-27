@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: yes
+  vars:
+    my_vms: 
+       vm_name: "{{ ahv_vm_name }}"
+       vm_ip: "{{ ahv_vm_ip }}"
+       vm_ram: "{{ ahv_vm_ram }}"
+       vm_num_cpu_per_socket: "{{ ahv_vm_cpu }}"
+       vm_num_sockets: "{{ ahv_vm_socket }}" 
+       vm_disk_list:
+          - disk_size_mib: 2048 
+
+  tasks:
+    - name: include nutanix role
+      include_role:
+        name: nutanix_vm_provisioner
+        

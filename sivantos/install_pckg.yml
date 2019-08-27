@@ -1,0 +1,21 @@
+- hosts: something
+  become: true
+  tasks:
+    - name: install package
+      yum:
+        name: "{{ pckg_name }}"
+        state: present
+
+    - name: start service
+      service:
+        name: "{{ svc_name }}" 
+        state: started
+        enabled: yes
+   
+    - name: enable firewall ports
+      firewalld:
+        service: "{{ svc_port }}"
+        permanent: true
+        state: enabled
+        
+        
