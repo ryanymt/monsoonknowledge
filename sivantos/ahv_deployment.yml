@@ -2,7 +2,7 @@
   gather_facts: yes
   vars:
     my_vms: 
-       vm_name: "{{ ahv_vm_name }}"
+       vm_name: "ansible-testvm"
        vm_ip: "{{ ahv_vm_ip }}"
        vm_ram: "{{ ahv_vm_ram }}"
        vm_num_cpu_per_socket: "{{ ahv_vm_cpu }}"
