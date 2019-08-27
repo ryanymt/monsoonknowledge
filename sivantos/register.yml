@@ -4,7 +4,7 @@
     - name: register to RHN
       redhat_subscription:
         state: present
-        username: ryan.ye@redhat.com
+        username: "ryan.ye@redhat.com"
         password: "N0thing,10"
         auto_attach: true
 
