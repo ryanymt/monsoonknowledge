@@ -17,5 +17,4 @@
         service: "{{ svc_port }}"
         permanent: true
         state: enabled
-        
-        
+        immediate: true
