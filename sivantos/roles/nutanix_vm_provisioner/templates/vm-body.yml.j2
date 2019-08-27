@@ -18,9 +18,9 @@ spec:
 {% endfor %}
     memory_size_mib: {{ vm.vm_ram }}
     nic_list:
-    - ip_endpoint_list:
-      - ip: {{ vm.vm_ip }}
-      subnet_reference:
+#    - ip_endpoint_list:
+#      - ip: {{ vm.vm_ip }}
+    - subnet_reference:
         kind: subnet
         uuid: {{ subnet_uuid }}
     num_sockets: {{ vm.vm_num_sockets }}
