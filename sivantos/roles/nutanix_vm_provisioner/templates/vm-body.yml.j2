@@ -26,6 +26,3 @@ spec:
     num_sockets: {{ vm.vm_num_sockets }}
     num_vcpus_per_socket: {{ vm.vm_num_cpu_per_socket }}
     power_state: 'ON'
-#    guest_customization:
-#      cloud_init:
-#        user_data: {{ lookup('template','cloud-init.yml.j2') | b64encode }}
