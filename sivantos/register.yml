@@ -4,8 +4,8 @@
     - name: register to RHN
       redhat_subscription:
         state: present
-        username: "ryan.ye@redhat.com"
-        password: "N0thing,10"
+        username: "wendy.yeo@ctc-g.com.sg"
+        password: "redhat123"
         auto_attach: true
 
     - name: update all packages
