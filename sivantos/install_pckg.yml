@@ -1,4 +1,4 @@
-- hosts: something
+- hosts: all
   become: true
   tasks:
     - name: install package

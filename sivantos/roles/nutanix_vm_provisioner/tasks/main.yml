@@ -6,3 +6,4 @@
 - import_tasks: get_image_uuids.yml
 - import_tasks: define_uuids_from_names.yml
 - import_tasks: provision_vm.yml
+- import_tasks: get_vm_uuids.yml

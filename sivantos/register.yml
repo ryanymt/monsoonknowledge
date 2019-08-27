@@ -1,13 +1,11 @@
-- hosts: something
+- hosts: all
   become: true
-  vars_file:
-     - passwords.txt
   tasks: 
     - name: register to RHN
       redhat_subscription:
         state: present
         username: ryan.ye@redhat.com
-        password: "{{ rhn_pass }}"
+        password: "N0thing,10"
         auto_attach: true
 
     - name: update all packages
