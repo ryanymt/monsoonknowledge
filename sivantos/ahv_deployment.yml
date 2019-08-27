@@ -14,4 +14,6 @@
     - name: include nutanix role
       include_role:
         name: nutanix_vm_provisioner
+      vars:
+        vm_defs: "{{ my_vms }}"
         
